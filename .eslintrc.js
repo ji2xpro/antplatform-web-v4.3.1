@@ -47,8 +47,7 @@ module.exports = {
     'curly': [2, 'multi-line'],
     'dot-location': [2, 'property'],
     'eol-last': 2,
-    // 'eqeqeq': ["error", "always", {"null": "ignore"}],
-    'eqeqeq': ["off"],
+    'eqeqeq': ["error", "always", {"null": "ignore"}],
     'generator-star-spacing': [2, {
       'before': true,
       'after': true
@@ -143,13 +142,10 @@ module.exports = {
     }],
     'no-unreachable': 2,
     'no-unsafe-finally': 2,
-    'vue/no-unused-vars': 0,
-    'no-unused-vars': 0,
-    // 'no-unused-vars': [2, {
-    //   // 'vars': 'all',
-    //   varsIgnorePattern: '.*',
-    //   'args': 'none'
-    // }],
+    'no-unused-vars': [2, {
+      'vars': 'all',
+      'args': 'none'
+    }],
     'no-useless-call': 2,
     'no-useless-computed-key': 2,
     'no-useless-constructor': 2,
