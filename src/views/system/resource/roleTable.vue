@@ -471,7 +471,7 @@ export default {
       // }
 
       var keysChecked = this.$refs['tree'].getCheckedKeys()
-      var keysHalf = this.$refs['tree'].getHalfCheckedKeys().filter(item => item !== 0)
+      var keysHalf = this.$refs['tree'].getHalfCheckedKeys().filter(item => item != 0)
       ids = ids.concat(keysChecked, keysHalf)
 
       var that = this
