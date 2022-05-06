@@ -1,19 +1,22 @@
 <template>
-  <div class="sidebar-logo-container" :class="{'collapse':collapse}">
+  <div class="sidebar-logo-container" :class="{'collapse':collapse}" :style="{ backgroundColor: sideTheme === 'theme-dark' ? variables.menuBg : variables.menuLightBg }">
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 v-else class="sidebar-title">{{ title }} </h1>
+        <h1 v-else class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' ? variables.sidebarTitle : variables.sidebarLightTitle }">{{ title }} </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 class="sidebar-title">{{ title }} </h1>
+        <h1 class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' ? variables.sidebarTitle : variables.sidebarLightTitle }">{{ title }} </h1>
       </router-link>
     </transition>
   </div>
 </template>
 
 <script>
+import antplatform from '@/assets/images/antplatform.png'
+import variables from '@/styles/variables.scss'
+
 export default {
   name: 'SidebarLogo',
   props: {
@@ -24,8 +27,20 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Element Admin',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      // title: 'Vue Element Admin',
+      // logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      logo: antplatform
+    }
+  },
+  computed: {
+    title() {
+      return this.$t('route.title')
+    },
+    variables() {
+      return variables;
+    },
+	  sideTheme() {
+      return this.$store.state.settings.sideTheme
     }
   }
 }
@@ -47,8 +62,9 @@ export default {
   height: 50px;
   line-height: 50px;
   background: #2b2f3a;
-  text-align: center;
+  // text-align: center;
   overflow: hidden;
+  padding-left: 10px;
 
   & .sidebar-logo-link {
     height: 100%;
@@ -58,7 +74,7 @@ export default {
       width: 32px;
       height: 32px;
       vertical-align: middle;
-      margin-right: 12px;
+      margin-right: 8px;
     }
 
     & .sidebar-title {

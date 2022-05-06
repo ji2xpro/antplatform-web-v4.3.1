@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import getPageTitle from '@/utils/get-page-title'
 export default {
   computed: {
     language() {
@@ -35,6 +36,8 @@ export default {
         message: 'Switch Language Success',
         type: 'success'
       })
+      // document.title = getPageTitle(this.$route.meta.title) + '-' + this.$t('platform.title')
+      document.title = getPageTitle(this.$route.meta.title)
     }
   }
 }

@@ -98,4 +98,7 @@ export default {
 .pagination-container.hidden {
   display: none;
 }
+.el-pagination {
+  float: right;
+}
 </style>

@@ -15,8 +15,34 @@ export function isExternal(path) {
  * @returns {Boolean}
  */
 export function validUsername(str) {
-  const valid_map = ['admin', 'editor']
-  return valid_map.indexOf(str.trim()) >= 0
+  // const valid_map = ['admin', 'editor']
+  // return valid_map.indexOf(str.trim()) >= 0
+  if (str.trim().length <= 0) {
+    return false
+  }
+  return true
+}
+
+/**
+ * @param {string} str
+ * @returns {Boolean}
+ */
+export function validPassword(str) {
+  if (str.trim().length < 6) {
+    return false
+  }
+  return true
+}
+
+/**
+ * @param {string} str
+ * @returns {Boolean}
+ */
+export function validVCode(str) {
+  if (str.trim().length <= 0) {
+    return false
+  }
+  return true
 }
 
 /**

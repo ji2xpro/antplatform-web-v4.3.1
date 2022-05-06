@@ -1,0 +1,141 @@
+// <style lang="scss" scoped>
+$bg:#2d3a4b;
+$dark_gray:#889aa4;
+$light_gray:#eee;
+$background: '';
+
+// .login-container {
+//   position: fixed;
+//   height: 100%;
+//   width: 100%;
+//   background:url($background) no-repeat center fixed;
+//   background-size:100%;
+//   .login-form {
+//     position: absolute;
+//     left:0;
+//     right: 0;
+//     width: 520px;
+//     padding: 35px 35px 15px 35px;
+//     margin: 8% auto;
+//     background: rgba(109, 109, 109, 0.23);
+//     border: 0px solid rgb(221, 222, 225);
+//     box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+//   }
+
+.login-container {
+  min-height: 100%;
+  width: 100%;
+  background: $bg;
+  background:url($background) no-repeat center fixed;
+  overflow: hidden;
+
+  .login-form {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    padding: 35px 35px 15px 35px;
+    margin: 8% auto;
+    overflow: hidden;
+    background: rgba(109, 109, 109, 0.23);
+    border: 0px solid rgb(221, 222, 225);
+    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+  }
+
+  .title-container {
+    position: relative;
+
+    .title {
+      font-size: 26px;
+      color: $light_gray;
+      margin: 0px auto 40px auto;
+      text-align: center;
+      font-weight: bold;
+      // padding-top: 12px;
+    }
+
+    .set-language {
+      color: #fff;
+      position: absolute;
+      top: 3px;
+      font-size: 18px;
+      right: 0px;
+      cursor: pointer;
+    }
+  }
+
+  .svg-container {
+    padding: 6px 5px 6px 15px;
+    color: $dark_gray;
+    vertical-align: middle;
+    width: 30px;
+    display: inline-block;
+  }
+
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+    color: $dark_gray;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .v-code-img {
+    height: 47px;
+    float: right;
+    margin-top: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    margin-bottom: 22px;
+    width: 100%;
+  }
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+
+  .other-ways {
+    color: #fff;
+    font-size: 14px;
+
+    svg {
+      cursor: pointer;
+      margin-left: 10px;
+
+      &:hover {
+          color: #1890ff;
+      }
+  }
+  }
+
+  .tips {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+
+    span {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .thirdparty-button {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+  }
+  
+  @media only screen and (max-width: 470px) {
+    .thirdparty-button {
+      display: none;
+    }
+  }
+}
+// </style>

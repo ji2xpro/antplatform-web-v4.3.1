@@ -1,5 +1,10 @@
 export default {
+  platform: {
+    title: 'AntPlatform',
+    description: 'AntPlatform, Let everything become so simple!'
+  },
   route: {
+    title: 'AntPlatform',
     dashboard: 'Dashboard',
     documentation: 'Documentation',
     guide: 'Guide',
@@ -77,9 +82,12 @@ export default {
     logIn: 'Login',
     username: 'Username',
     password: 'Password',
+    capsLock: 'Caps lock is On',
     any: 'any',
     thirdparty: 'Or connect with',
-    thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'
+    thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !',
+    usernameError: 'Please enter the username',
+    passwordError: 'The password can not be less than 6 digits'
   },
   documentation: {
     documentation: 'Documentation',
