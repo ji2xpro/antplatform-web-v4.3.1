@@ -83,7 +83,7 @@ export default {
     operationTable: '操作日志',
     systemTable: '系统日志',
     monitor: '系统监控',
-    server:'服务监控',
+    server: '服务监控',
     cache: '缓存监控',
     help: '系统帮助',
     code: '源码更新',

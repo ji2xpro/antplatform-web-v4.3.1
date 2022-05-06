@@ -8,7 +8,7 @@
 <script>
 import getPageTitle from '@/utils/get-page-title'
 export default {
-  name: 'App',
+  name: 'App'
   // created() {
   //   this.$watch('$route.meta.title', () => {
   //     document.title = getPageTitle(this.$route.meta.title) + '-' + this.$t('platform.title')
@@ -20,20 +20,20 @@ export default {
   //   }
   // }
   // computed: {
-    // title() {
-      
-      // if (this.$route.meta.title) {
-      //   document.title = getPageTitle(this.$route.meta.title) + '-' + getPageTitle('title')
-      // } else {
-      //   document.title = getPageTitle('title')
-      // }
-      // return getPageTitle(this.$route.meta.title)
+  // title() {
 
-      // const { title } = this.$route.meta
-      // const newTitle = title ? `${getPageTitle(title)}-${getPageTitle('title')}` : getPageTitle('title')
-      // document.title = newTitle
-      // return newTitle
-    // }
+  // if (this.$route.meta.title) {
+  //   document.title = getPageTitle(this.$route.meta.title) + '-' + getPageTitle('title')
+  // } else {
+  //   document.title = getPageTitle('title')
+  // }
+  // return getPageTitle(this.$route.meta.title)
+
+  // const { title } = this.$route.meta
+  // const newTitle = title ? `${getPageTitle(title)}-${getPageTitle('title')}` : getPageTitle('title')
+  // document.title = newTitle
+  // return newTitle
+  // }
   // },
   // mounted() {
   //   console.log(this.$route.meta.title)

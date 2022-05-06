@@ -52,7 +52,7 @@ export default {
       }
     },
     variables() {
-      return variables;
+      return variables
     }
   },
   methods: {

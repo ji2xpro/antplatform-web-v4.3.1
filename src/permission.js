@@ -45,11 +45,11 @@ router.beforeEach(async(to, from, next) => {
 
           // dynamically add accessible routes / 调用 router.addRoutes 动态添加路由，把不符合条件的路由清除，最后和原来的路由合并形成新的路由表
           router.addRoutes(accessRoutes)
-          
+
           const accessResourcesRoutes = await store.dispatch('permission/generateResourcesRoutes', menus)
           router.addRoutes(accessResourcesRoutes)
 
-          //缓存权限
+          // 缓存权限
           await store.dispatch('permission/generateAuth', auth)
 
           // hack method to ensure that addRoutes is complete
@@ -61,7 +61,7 @@ router.beforeEach(async(to, from, next) => {
           // Message.error(error || 'Has Error')
           Message.error({
             type: 'error',
-            message: error || "出现错误，请稍后再试"
+            message: error || '出现错误，请稍后再试'
           })
           next(`/login?redirect=${to.path}`)
           NProgress.done()

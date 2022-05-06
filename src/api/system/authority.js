@@ -1,11 +1,11 @@
 import request from '@/utils/request'
 
 export function getList(param) {
-    return request({
-      url: '/authority/list',
-      method: 'get',
-      data:param
-    })
+  return request({
+    url: '/authority/list',
+    method: 'get',
+    data: param
+  })
 }
 
 export function queryRoleAuth(roleId) {
@@ -26,6 +26,6 @@ export function save(data) {
 export function drop(id) {
   return request({
     url: '/authority/delete/' + id,
-    method: 'post',
+    method: 'post'
   })
 }

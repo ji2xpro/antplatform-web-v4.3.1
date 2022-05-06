@@ -51,7 +51,7 @@ import RegisterForm from './components/RegisterForm'
 
 export default {
   name: 'Login',
-  components: { LangSelect, SocialSign,Background, LoginForm, RegisterForm },
+  components: { LangSelect, SocialSign, Background, LoginForm, RegisterForm },
   computed: {
     component() {
       const formType = this.$route.path.substring(1)
@@ -163,6 +163,4 @@ $cursor: #fff;
 }
 </style>
 
-
-</style>
 <style lang="scss" src="./style.scss"></style>

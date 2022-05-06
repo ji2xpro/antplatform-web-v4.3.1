@@ -102,10 +102,10 @@ function assembleAsyncRoutes(resources) {
 
 /**
  * 格式化树形结构数据 生成 vue-router 层级路由表enerator
- * @param {*} routers 
- * @returns 
+ * @param {*} routers
+ * @returns
  */
- export const generator = (routers) => {
+export const generator = (routers) => {
   return routers.map(router => {
     const currentRouter = {
       // 如果路由是主目录，则作为默认 /path，否则 路由地址 只是path
@@ -118,7 +118,7 @@ function assembleAsyncRoutes(resources) {
       meta: {
         title: router.icon,
         noCache: !router.isCache,
-        icon: router.icon || undefined,
+        icon: router.icon || undefined
       },
       hidden: !!router.isDelete
     }
@@ -128,7 +128,7 @@ function assembleAsyncRoutes(resources) {
     // }
     // 重定向
     if (router.url.indexOf('Layout') >= 0 || router.url.indexOf('nested') >= 0) {
-      currentRouter.redirect = `/`+ getRediret(router)
+      currentRouter.redirect = `/` + getRediret(router)
       currentRouter.alwaysShow = true
     }
     // 是否有子菜单，并递归处理
@@ -142,9 +142,9 @@ function assembleAsyncRoutes(resources) {
 
 /**
  * 递归获取重定向路径
- * 
- * @param {*} resource 
- * @returns 
+ *
+ * @param {*} resource
+ * @returns
  */
 function getRediret(resource) {
   if (resource.children && resource.children.length > 0) {
@@ -199,7 +199,7 @@ const actions = {
       resolve(accessedRoutes)
     })
   },
-  generateAuth({commit},auth){
+  generateAuth({ commit }, auth) {
     commit('SET_BTNS', auth)
   }
 }

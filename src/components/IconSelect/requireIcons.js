@@ -5,7 +5,7 @@ const requireAll = requireContext => requireContext.keys()
 const re = /\/([\w|-]+)\.svg/
 
 const icons = requireAll(req).map(i => {
-  console.log("index："+i)
+  console.log('index：' + i)
   return i.match(re)[1]
 })
 

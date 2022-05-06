@@ -128,7 +128,7 @@
 <script>
 import { fetchList, createRole, deleteRole, updateRole, updateRoleStatus, updateRoleResources, checkRoleName, checkRoleKey } from '@/api/system/role'
 // import { fetchResourceList, queryRoleResource } from '@/api/system/resource'
-import { getList as getAuthList,queryRoleAuth} from "@/api/system/authority";
+import { getList as getAuthList, queryRoleAuth } from '@/api/system/authority'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
@@ -395,9 +395,9 @@ export default {
       this.listLoading = true
       getAuthList(this.treeQuery).then(response => {
         var node = {
-          id:0,
-          name:'所有权限',
-          children:response.data
+          id: 0,
+          name: '所有权限',
+          children: response.data
         }
         // this.resourceTree = response.data
         this.resourceTree = [node]
@@ -422,8 +422,8 @@ export default {
         //   this.listLoading = false
         // })
         queryRoleAuth(row.id).then(response => {
-          let auths = response.data
-          if(auths && auths.length > 0){
+          const auths = response.data
+          if (auths && auths.length > 0) {
             // var index = 0
             this.resourceTreeCheckedKeys = auths.filter(item => item.type === 2 || item.code === 'public').map(item => item.id)
             this.resourceTreeExpandedKeys = auths.filter(item => item.type === 2).map(item => item.id)
@@ -442,7 +442,7 @@ export default {
             // }
             this.setCheckedKeys(this.resourceTreeCheckedKeys)
           }
-          this.listLoading = false 
+          this.listLoading = false
         })
       })
     },
@@ -471,8 +471,8 @@ export default {
       // }
 
       var keysChecked = this.$refs['tree'].getCheckedKeys()
-      var keysHalf = this.$refs['tree'].getHalfCheckedKeys().filter(item => item != 0)
-      ids = ids.concat(keysChecked,keysHalf)
+      var keysHalf = this.$refs['tree'].getHalfCheckedKeys().filter(item => item !== 0)
+      ids = ids.concat(keysChecked, keysHalf)
 
       var that = this
       var addResourceIds = ids.filter(function(v) { return that.oldResourceList.indexOf(v) === -1 })
@@ -493,8 +493,8 @@ export default {
       //   }
       // }
 
-      this.formatRoleResource(addResourceIds,this.resourceData.addResources,this.currentRole)
-      this.formatRoleResource(delResourceIds,this.resourceData.delResources,this.currentRole)
+      this.formatRoleResource(addResourceIds, this.resourceData.addResources, this.currentRole)
+      this.formatRoleResource(delResourceIds, this.resourceData.delResources, this.currentRole)
 
       console.log('addResources:' + JSON.stringify(this.resourceData.addResources))
       console.log('delResources:' + JSON.stringify(this.resourceData.delResources))
@@ -510,17 +510,17 @@ export default {
       })
     },
     formatRoleResource(arr, subArr, roleId) {
-        if (Array.isArray(arr) && Array.isArray(subArr)) {
-          arr.forEach(item => {
-            subArr.push({
-              roleId,
-              authId: item,
-            })
+      if (Array.isArray(arr) && Array.isArray(subArr)) {
+        arr.forEach(item => {
+          subArr.push({
+            roleId,
+            authId: item
           })
-        } else {
-          console.warn(`${arr}is not array`)
-        }
-      },
+        })
+      } else {
+        console.warn(`${arr}is not array`)
+      }
+    },
     setCheckedKeys(keys) {
       if (this.$refs['tree']) {
         this.$refs['tree'].setCheckedKeys(keys)

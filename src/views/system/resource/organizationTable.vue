@@ -62,14 +62,14 @@
           </el-select>
         </el-form-item>
         <el-form-item :label="$t('organizationTable.icon')" prop="icon">
-                <el-popover placement="bottom-start" width="460" trigger="click" @show="$refs['iconSelect'].reset()" >
-                  <IconSelect ref="iconSelect" @selected="selected" />
-                  <el-input slot="reference" v-model="organizationForm.icon" placeholder="点击选择图标" readonly>
-                    <svg-icon v-if="organizationForm.icon" slot="prefix" :icon-class="organizationForm.icon" class="el-input__icon" style="height: 32px;width: 16px;" />
-                    <i v-else slot="prefix" class="el-icon-search el-input__icon" />
-                  </el-input>
-                </el-popover>
-              </el-form-item>
+          <el-popover placement="bottom-start" width="460" trigger="click" @show="$refs['iconSelect'].reset()">
+            <IconSelect ref="iconSelect" @selected="selected" />
+            <el-input slot="reference" v-model="organizationForm.icon" placeholder="点击选择图标" readonly>
+              <svg-icon v-if="organizationForm.icon" slot="prefix" :icon-class="organizationForm.icon" class="el-input__icon" style="height: 32px;width: 16px;" />
+              <i v-else slot="prefix" class="el-icon-search el-input__icon" />
+            </el-input>
+          </el-popover>
+        </el-form-item>
         <!-- <el-form-item :label="$t('organizationTable.icon')" prop="organizationIcon">
           <el-input v-model.trim="organizationForm.icon" placeholder="输入组织图标" maxlength="11" />
         </el-form-item> -->
@@ -102,11 +102,11 @@
 */
 import { fetchOrgList, createOrganization, deleteOrganization, updateOrganization, checkOrganizationName, checkOrganizationKey } from '@/api/system/organization'
 import waves from '@/directive/waves' // 水波纹指令
-import Data from '@/api/pcaa';
-import IconSelect from "@/components/IconSelect";
+import Data from '@/api/pcaa'
+import IconSelect from '@/components/IconSelect'
 
 export default {
-  name: 'OrganizationTable',  
+  name: 'OrganizationTable',
   directives: {
     waves
   },
@@ -229,7 +229,7 @@ export default {
   methods: {
     // 选择图标
     selected(name) {
-      this.organizationForm.icon = name;
+      this.organizationForm.icon = name
     },
     getList() {
       this.listLoading = true
@@ -255,7 +255,7 @@ export default {
         var province = { value: key, label: Data['86'][key], children: citys }
         options.push(province)
       }
-    
+
       this.provinceOptions = options
     },
     resetOrganizationForm() {

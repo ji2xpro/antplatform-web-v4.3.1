@@ -37,7 +37,7 @@ export default {
       return this.$t('route.title')
     },
     variables() {
-      return variables;
+      return variables
     },
 	  sideTheme() {
       return this.$store.state.settings.sideTheme

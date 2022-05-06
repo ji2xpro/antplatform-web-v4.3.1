@@ -130,7 +130,7 @@ export default {
                 circleArr[i].y,
                 circleArr[i + j].x,
                 circleArr[i + j].y,
-                lineOpacity,
+                lineOpacity
               )
             }
           }
