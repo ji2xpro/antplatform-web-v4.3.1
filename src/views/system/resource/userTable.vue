@@ -20,18 +20,18 @@
               </el-form-item>
             </el-col>
             <el-col :span="6" class="line">
-              <el-form-item :label="$t('userTable.userName')" prop="userName">
-                <el-input v-model="listQuery.userName" :placeholder="$t('userTable.userName')" style="width: 180px;" class="filter-item" maxlength="32" @keyup.enter.native="handleFilter" />
+              <el-form-item :label="$t('userTable.username')" prop="username">
+                <el-input v-model="listQuery.username" :placeholder="$t('userTable.username')" style="width: 180px;" class="filter-item" maxlength="32" @keyup.enter.native="handleFilter" />
               </el-form-item>
             </el-col>
             <el-col :span="6" class="line">
-              <el-form-item :label="$t('userTable.userMobile')" prop="userMobile">
-                <el-input v-model="listQuery.userMobile" :placeholder="$t('userTable.userMobile')" style="width: 180px;" class="filter-item" maxlength="11" @keyup.enter.native="handleFilter" />
+              <el-form-item :label="$t('userTable.mobile')" prop="mobile">
+                <el-input v-model="listQuery.mobile" :placeholder="$t('userTable.mobile')" style="width: 180px;" class="filter-item" maxlength="11" @keyup.enter.native="handleFilter" />
               </el-form-item>
             </el-col>
             <el-col :span="6" class="line">
-              <el-form-item :label="$t('userTable.userEmail')" prop="userEmail">
-                <el-input v-model="listQuery.userEmail" :placeholder="$t('userTable.userEmail')" style="width: 180px;" class="filter-item" maxlength="100" @keyup.enter.native="handleFilter" />
+              <el-form-item :label="$t('userTable.email')" prop="email">
+                <el-input v-model="listQuery.email" :placeholder="$t('userTable.email')" style="width: 180px;" class="filter-item" maxlength="100" @keyup.enter.native="handleFilter" />
               </el-form-item>
             </el-col>
             <el-col :span="6">
@@ -52,8 +52,8 @@
               </el-form-item>
             </el-col>
             <el-col :span="6">
-              <el-form-item :label="$t('userTable.userStatus')" prop="userStatus">
-                <el-select v-model="listQuery.userStatus" :placeholder="$t('userTable.userStatus')" clearable style="width: 180px" class="filter-item">
+              <el-form-item :label="$t('userTable.status')" prop="status">
+                <el-select v-model="listQuery.status" :placeholder="$t('userTable.status')" clearable style="width: 180px" class="filter-item">
                   <el-option v-for="item in statusOption" :key="item.key" :label="item.label" :value="item.key" />
                 </el-select>
               </el-form-item>
@@ -91,24 +91,24 @@
           <span>{{ scope.row.organizationName }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('userTable.userAccount')" width="" align="center">
+      <el-table-column :label="$t('userTable.username')" width="" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userAccount }}</span>
+          <span>{{ scope.row.username }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('userTable.userName')" width="" align="center">
+      <el-table-column :label="$t('userTable.name')" width="" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userName }}</span>
+          <span>{{ scope.row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('userTable.userMobile')" width="" align="center">
+      <el-table-column :label="$t('userTable.mobile')" width="" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userMobile }}</span>
+          <span>{{ scope.row.mobile }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('userTable.userEmail')" width="" align="center">
+      <el-table-column :label="$t('userTable.email')" width="" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userEmail }}</span>
+          <span>{{ scope.row.email }}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('userTable.roleName')" width="" align="center">
@@ -126,9 +126,9 @@
           <span>{{ scope.row.createTime | parseTime('{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('userTable.userStatus')" class-name="status-col" width="100">
+      <el-table-column :label="$t('userTable.status')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.userStatus | statusFilter">{{ scope.row.userStatus | statusNameFilter }}</el-tag>
+          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status | statusNameFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column v-if="false" width="110px">
@@ -143,9 +143,9 @@
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{ $t('table.edit') }}</el-button>
           <el-button plain type="primary" size="mini" style="width:68px;" @click="handleDataPermission(scope.row)">{{ $t('userTable.permissionEdit') }}</el-button>
-          <el-button v-if="scope.row.userStatus!='1'" size="mini" type="success" @click="handleModifyStatus(scope.row,'1')">{{ $t('userTable.enable') }}
+          <el-button v-if="scope.row.status!='0'" size="mini" type="success" @click="handleModifyStatus(scope.row,'1')">{{ $t('userTable.enable') }}
           </el-button>
-          <el-button v-if="scope.row.userStatus!='0' && scope.row.userStatus!='2'" size="mini" @click="handleModifyStatus(scope.row,'0')">{{ $t('userTable.disable') }}
+          <el-button v-if="scope.row.status!='1' && scope.row.status!='2'" size="mini" @click="handleModifyStatus(scope.row,'0')">{{ $t('userTable.disable') }}
           </el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.row)">{{ $t('table.delete') }}
           </el-button>
@@ -156,7 +156,7 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" :close-on-click-modal="false">
       <el-form ref="userForm" :model="userForm" :rules="rules" label-width="100px" class="userForm" style="width: 400px; margin-left:50px;">
-        <el-form-item :label="$t('userTable.organization')" prop="userAccount">
+        <el-form-item :label="$t('userTable.organization')" prop="username">
           <el-cascader
             v-model="selectedOrgOptions"
             :options="orgList"
@@ -169,20 +169,20 @@
             style="width: 100%;"
           />
         </el-form-item>
-        <el-form-item :label="$t('userTable.userAccount')" prop="userAccount">
-          <el-input v-model="userForm.userAccount" placeholder="输入用户账号" maxlength="32" />
+        <el-form-item :label="$t('userTable.username')" prop="username">
+          <el-input v-model="userForm.username" placeholder="输入用户账号" maxlength="32" />
         </el-form-item>
-        <el-form-item :label="$t('userTable.userNickName')" prop="userNickName">
-          <el-input v-model="userForm.userNickName" placeholder="输入用户昵称" maxlength="32" />
+        <el-form-item :label="$t('userTable.nickname')" prop="nickname">
+          <el-input v-model="userForm.nickname" placeholder="输入用户昵称" maxlength="32" />
         </el-form-item>
-        <el-form-item :label="$t('userTable.userName')" prop="userName">
-          <el-input v-model="userForm.userName" placeholder="输入用户姓名" maxlength="32" />
+        <el-form-item :label="$t('userTable.name')" prop="name">
+          <el-input v-model="userForm.name" placeholder="输入用户姓名" maxlength="32" />
         </el-form-item>
-        <el-form-item :label="$t('userTable.userMobile')" prop="userMobile">
-          <el-input v-model="userForm.userMobile" placeholder="输入用户手机号码" maxlength="11" />
+        <el-form-item :label="$t('userTable.mobile')" prop="mobile">
+          <el-input v-model="userForm.mobile" placeholder="输入用户手机号码" maxlength="11" />
         </el-form-item>
-        <el-form-item :label="$t('userTable.userEmail')" prop="userEmail">
-          <el-input v-model="userForm.userEmail" placeholder="输入用户电子邮箱" maxlength="32" />
+        <el-form-item :label="$t('userTable.email')" prop="email">
+          <el-input v-model="userForm.email" placeholder="输入用户电子邮箱" maxlength="32" />
         </el-form-item>
         <el-form-item :label="$t('userTable.roleName')" prop="roleId">
           <el-select v-model="userForm.roleIds" class="filter-item" multiple placeholder="选择用户角色" style="width: 100%;">
@@ -195,17 +195,17 @@
         <el-form-item :label="$t('userTable.street')" prop="street">
           <el-input v-model="userForm.street" placeholder="详细地址" maxlength="120" />
         </el-form-item>
-        <el-form-item :label="$t('userTable.userSex')" prop="userSex">
-          <el-radio-group v-model="userForm.userSex">
+        <el-form-item :label="$t('userTable.sex')" prop="sex">
+          <el-radio-group v-model="userForm.sex">
             <el-radio :label="1">男性</el-radio>
             <el-radio :label="0">女性</el-radio>
             <el-radio :label="2">保密</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="$t('userTable.userStatus')" prop="userStatus">
-          <el-radio-group v-model="userForm.userStatus">
-            <el-radio :label="1">启用</el-radio>
-            <el-radio :label="0">禁用</el-radio>
+        <el-form-item :label="$t('userTable.status')" prop="status">
+          <el-radio-group v-model="userForm.status">
+            <el-radio :label="0">启用</el-radio>
+            <el-radio :label="1">禁用</el-radio>
             <el-radio :label="2">未激活</el-radio>
           </el-radio-group>
         </el-form-item>
@@ -250,7 +250,7 @@
 </template>
 
 <script>
-import { fetchList, createUser, deleteUser, updateUser, updateUserStatus, fetchRoleList, updateUserDataPermission, checkUserAccount, checkUserMobile, checkUserEmail, checkUserNickName } from '@/api/system/user'
+import { fetchList, createUser, deleteUser, updateUser, updateUserStatus, fetchRoleList, updateUserDataPermission, checkUsername, checkMobile, checkEmail, checkNickname } from '@/api/system/user'
 import { fetchOrgList } from '@/api/system/organization'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
@@ -266,17 +266,17 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        1: 'success',
-        2: 'info',
-        0: 'danger'
+        0: 'success',
+        1: 'danger',
+        2: 'info'
       }
       return statusMap[status]
     },
     statusNameFilter(status) {
       const statusNameMap = {
-        1: '启用',
-        2: '未激活',
-        0: '禁用'
+        0: '启用',
+        1: '禁用',
+        2: '未激活'
       }
       return statusNameMap[status]
     },
@@ -290,12 +290,12 @@ export default {
     }
   },
   data() {
-    var validUserAccount = (rule, value, callback) => {
+    var validUsername = (rule, value, callback) => {
       var keyData = {
         id: this.userForm.id,
-        userAccount: value
+        username: value
       }
-      checkUserAccount(keyData).then(response => {
+      checkUsername(keyData).then(response => {
         if (!response.data) {
           callback(new Error('用户账号已存在'))
         } else {
@@ -303,13 +303,13 @@ export default {
         }
       })
     }
-    var validUserNickName = (rule, value, callback) => {
+    var validNickname = (rule, value, callback) => {
       if (value) {
         var keyData = {
           id: this.userForm.id,
-          userNickName: value
+          nickname: value
         }
-        checkUserNickName(keyData).then(response => {
+        checkNickname(keyData).then(response => {
           if (!response.data) {
             callback(new Error('用户昵称已存在'))
           } else {
@@ -318,12 +318,12 @@ export default {
         })
       }
     }
-    var validUserMobile = (rule, value, callback) => {
+    var validMobile = (rule, value, callback) => {
       var keyData = {
         id: this.userForm.id,
-        userMobile: value
+        mobile: value
       }
-      checkUserMobile(keyData).then(response => {
+      checkMobile(keyData).then(response => {
         if (!response.data) {
           callback(new Error('手机号已存在'))
         } else {
@@ -331,12 +331,12 @@ export default {
         }
       })
     }
-    var validUserEmail = (rule, value, callback) => {
+    var validEmail = (rule, value, callback) => {
       var keyData = {
         id: this.userForm.id,
-        userEmail: value
+        email: value
       }
-      checkUserEmail(keyData).then(response => {
+      checkEmail(keyData).then(response => {
         if (!response.data) {
           callback(new Error('电子邮箱已存在'))
         } else {
@@ -359,12 +359,12 @@ export default {
         // size: 20,
         pageNo: 1,
         pageSize: 10,
-        userName: '',
-        userMobile: '',
-        userEmail: '',
+        username: '',
+        mobile: '',
+        email: '',
         roleIds: [],
         organizationId: '',
-        userStatus: ''
+        status: ''
       },
       statusOption: [
         { label: '启用', key: '1' },
@@ -380,15 +380,15 @@ export default {
       },
       userForm: {
         id: '',
-        userAccount: '',
-        userNickName: '',
-        userName: '',
-        userMobile: '',
-        userEmail: '',
+        username: '',
+        name: '',
+        nickname: '',
+        mobile: '',
+        email: '',
         roleIds: [],
         organizationId: '',
-        userSex: 1,
-        userStatus: 1,
+        sex: 1,
+        status: 1,
         areas: [],
         street: '',
         description: ''
@@ -399,20 +399,20 @@ export default {
         removeDataPermissions: []
       },
       rules: {
-        userAccount: [
+        username: [
           { required: true, message: '请输入用户账号', trigger: 'blur' },
           { min: 3, max: 16, message: '长度在 3 到 16 个字符', trigger: 'blur' },
-          { validator: validUserAccount, trigger: 'blur' }
+          { validator: validUsername, trigger: 'blur' }
         ],
-        userNickName: [
+        nickName: [
           { min: 2, max: 16, message: '长度在 2 到 16 个字符', trigger: 'blur' },
-          { validator: validUserNickName, trigger: 'blur' }
+          { validator: validNickname, trigger: 'blur' }
         ],
-        userName: [
+        name: [
           { required: true, message: '请输入用户姓名', trigger: 'blur' },
           { min: 2, max: 16, message: '长度在 2 到 16 个字符', trigger: 'blur' }
         ],
-        userMobile: [
+        mobile: [
           {
             pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
             required: true,
@@ -425,9 +425,9 @@ export default {
             message: '长度在 11 到 11 个字符',
             trigger: 'blur'
           },
-          { validator: validUserMobile, trigger: 'blur' }
+          { validator: validMobile, trigger: 'blur' }
         ],
-        userEmail: [
+        email: [
           {
             type: 'email',
             required: true,
@@ -435,7 +435,7 @@ export default {
             trigger: 'blur'
           },
           { min: 5, max: 32, message: '长度在 5 到 32 个字符', trigger: 'blur' },
-          { validator: validUserEmail, trigger: 'blur' }
+          { validator: validEmail, trigger: 'blur' }
         ],
         roleIds: [
           { required: true, message: '请选择用户角色', trigger: 'change' }
@@ -567,11 +567,11 @@ export default {
     resetUserForm() {
       this.userForm = {
         id: '',
-        userAccount: '',
-        userNickName: '',
-        userName: '',
-        userMobile: '',
-        userEmail: '',
+        username: '',
+        nickName: '',
+        name: '',
+        mobile: '',
+        email: '',
         roleIds: [],
         organizationId: '',
         userSex: 1,
@@ -713,7 +713,7 @@ export default {
     },
     handleDelete(row) {
       this.$confirm(
-        '此操作将永久删除该用户：' + row.userName + ', 是否继续?',
+        '此操作将永久删除该用户：' + row.username + ', 是否继续?',
         '提示',
         {
           confirmButtonText: '确定',
@@ -767,10 +767,10 @@ export default {
         ]
         const filterVal = [
           'id',
-          'userAccount',
-          'userName',
-          'userMobile',
-          'userEmail',
+          'username',
+          'name',
+          'mobile',
+          'email',
           'roleName',
           'userSex',
           'createTime',

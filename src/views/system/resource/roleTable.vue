@@ -328,7 +328,7 @@ export default {
     updateData() {
       this.$refs['roleForm'].validate(valid => {
         if (valid) {
-          updateRole(this.roleForm).then(() => {
+          updateRole(this.roleForm).then((result) => {
             for (const v of this.list) {
               if (v.id === this.roleForm.id) {
                 const index = this.list.indexOf(v)
@@ -337,10 +337,12 @@ export default {
               }
             }
             this.dialogFormVisible = false
-            this.$message({
-              message: '更新成功',
-              type: 'success'
-            })
+            if (result.code === 20000) {
+              this.$message({
+                message: '更新成功',
+                type: 'success'
+              })
+            }
           })
         }
       })

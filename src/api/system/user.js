@@ -78,7 +78,7 @@ export function updateUserDataPermission(data) {
   })
 }
 
-export function checkUserAccount(data) {
+export function checkUsername(data) {
   return request({
     url: '/user/account/check',
     method: 'post',
@@ -86,7 +86,7 @@ export function checkUserAccount(data) {
   })
 }
 
-export function checkUserNickName(data) {
+export function checkNickname(data) {
   return request({
     url: '/user/nickname/check',
     method: 'post',
@@ -94,7 +94,7 @@ export function checkUserNickName(data) {
   })
 }
 
-export function checkUserMobile(data) {
+export function checkMobile(data) {
   return request({
     url: '/user/mobile/check',
     method: 'post',
@@ -102,7 +102,7 @@ export function checkUserMobile(data) {
   })
 }
 
-export function checkUserEmail(data) {
+export function checkEmail(data) {
   return request({
     url: '/user/email/check',
     method: 'post',
